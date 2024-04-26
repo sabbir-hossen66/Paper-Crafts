@@ -1,0 +1,20 @@
+.head-section {
+
+  border: none;
+  outline: none;
+  padding: 10px 16px;
+  cursor: pointer;
+
+}
+
+.active,
+.head-section:hover {
+  color: crimson;
+  font-size: larger;
+  text-shadow: aliceblue;
+}
+
+.head-section:hover {
+  border-bottom: 3px solid red;
+  font-size: larger;
+}
