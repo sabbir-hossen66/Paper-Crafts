@@ -31,9 +31,10 @@ const Header = () => {
 
   const navLinks = <>
     <li className="head-section font-semibold"><NavLink to={'/'}>Home</NavLink></li>
-    <li className="head-section font-semibold"><NavLink to={'/contact'}>Contact</NavLink></li>
-    <li className="head-section font-semibold"><NavLink to={'/up-profile'}>UserProfile</NavLink></li>
-    {/* <li><NavLink to={'/login'}>Login</NavLink></li> */}
+    <li className="head-section font-semibold"><NavLink to={'/all-item'}>All  Items</NavLink></li>
+    <li className="head-section font-semibold"><NavLink to={'/add-item'}>Add Item</NavLink></li>
+    <li className="head-section font-semibold"><NavLink to={'/my-list'}>My Item List</NavLink></li>
+
   </>
 
   return (
