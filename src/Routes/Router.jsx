@@ -8,6 +8,7 @@ import Home from "../Pages/Home/Home";
 import AddItem from "../Pages/AddItem/AddItem";
 import MyList from "../Pages/MyList/MyList";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import Register from "../Pages/Register/Register";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
       {
         path: "/my-list",
         element: <MyList></MyList>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
       },
     ],
   },
