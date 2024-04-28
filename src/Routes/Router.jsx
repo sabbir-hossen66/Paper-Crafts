@@ -9,6 +9,7 @@ import AddItem from "../Pages/AddItem/AddItem";
 import MyList from "../Pages/MyList/MyList";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Register from "../Pages/Register/Register";
+import Login from "../Pages/Login/Login";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
       },
     ],
   },
