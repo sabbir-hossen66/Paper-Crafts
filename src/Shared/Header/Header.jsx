@@ -1,9 +1,30 @@
 import { Link, NavLink } from "react-router-dom";
 import './Header.css'
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../Providers/AuthProviders";
 
 
 const Header = () => {
+
+  // useEffect(() => {
+  //   AOS.init({
+  //     duration: 2000,
+  //     easing: 'ease-in-out',
+  //     offset: 100,
+  //     once: true
+  //   });
+  // }, []);
+
+  const { user, logOut, } = useContext(AuthContext)
+
+
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch()
+  }
+
+
   // set theme
   const [theme, setTheme] = useState('light')
 
@@ -74,39 +95,42 @@ const Header = () => {
             <svg className="col-start-2 row-start-1 stroke-base-100 fill-base-100" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
           </label>
         </div>
-        {/* second bracket */}
+        {
 
-        <div className="flex justify-center items-center">
+          user ?
 
-          {/* dropdwon */}
+            <div className="flex justify-center items-center">
 
-          <div className="dropdown dropdown-hover">
-            <div tabIndex={0} role="button" className=" btn btn-ghost btn-circle avatar ">
-              <div className="w-10 rounded-full hover:relative">
-                <img alt="Tailwind CSS Navbar component" src='' />
+              {/* dropdwon */}
+
+              <div className="dropdown dropdown-hover">
+                <div tabIndex={0} role="button" className=" btn btn-ghost btn-circle avatar ">
+                  <div className="w-10 rounded-full hover:relative">
+                    <img alt="Tailwind CSS Navbar component" src='' />
+                  </div>
+                </div>
+                <ul tabIndex={0} className="dropdown-content z-[1] mb-2 menu p-2 shadow bg-indigo-400 font-semibold rounded-box w-40 text-white">
+                  <li>Name- {user.displayName}</li>
+                  <Link to={'/another-upProfile'}><li className="underline">See UpdatedProfile</li></Link>
+                </ul>
               </div>
+
+              <div>
+                <button onClick={handleLogOut} type="button" className="relative px-8 py-2 ml-4 overflow-hidden font-semibold rounded bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white">LogOut
+                </button>
+              </div>
+
             </div>
-            <ul tabIndex={0} className="dropdown-content z-[1] mb-2 menu p-2 shadow bg-indigo-400 font-semibold rounded-box w-40 text-white">
-              {/* <li>Name- {user.displayName}</li> */}
-              <Link to={'/another-upProfile'}><li className="underline">See UpdatedProfile</li></Link>
-            </ul>
-          </div>
+            :
+            <div>
+              <Link to='/login'>
+                <button type="button" className="relative px-8 py-2 ml-4 overflow-hidden font-semibold rounded bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white">Login
 
-          {/* <div>
-            <button type="button" className="relative px-8 py-2 ml-4 overflow-hidden font-semibold rounded bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white">LogOut
-            </button>
-          </div> */}
+                </button>
+              </Link>
+            </div>
 
-        </div>
-        {/* kolon */}
-        <div>
-          <Link to='/login'>
-            <button type="button" className="relative px-8 py-2 ml-4 overflow-hidden font-semibold rounded bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white">Login
-
-            </button>
-          </Link>
-        </div>
-        {/* bracket */}
+        }
       </div>
     </div>
   );
