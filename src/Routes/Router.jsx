@@ -17,8 +17,9 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/",
+        path: "/home",
         element: <Home></Home>,
+        loader: () => fetch('http://localhost:5000/papers')
       },
       {
         path: "/all-item",

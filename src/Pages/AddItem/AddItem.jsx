@@ -1,4 +1,4 @@
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 
 
 const AddItem = () => {
@@ -23,25 +23,25 @@ const AddItem = () => {
     console.log(newCoffee);
 
     // send data to the server
-    // fetch('https://coffee-store-server-74xiae2di-jhankarphero.vercel.app/coffee', {
-    //   method: 'POST',
-    //   headers: {
-    //     'content-type': 'application/json'
-    //   },
-    //   body: JSON.stringify(newCoffee)
-    // })
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     console.log(data);
-    //     if (data.insertedId) {
-    //       Swal.fire({
-    //         title: 'Success!',
-    //         text: 'Coffee Added Successfully',
-    //         icon: 'success',
-    //         confirmButtonText: 'Cool'
-    //       })
-    //     }
-    //   })
+    fetch('http://localhost:5000/papers', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(newCoffee)
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: 'Success!',
+            text: 'papers Added Successfully',
+            icon: 'success',
+            confirmButtonText: 'Cool'
+          })
+        }
+      })
   }
 
 
@@ -57,7 +57,7 @@ const AddItem = () => {
               <span className="label-text">Item Name</span>
             </label>
             <label className="input-group">
-              <input type="text" name="name" placeholder="Coffee Name" className="input input-bordered w-full" />
+              <input type="name" name="name" placeholder="Coffee Name" className="input input-bordered w-full" />
             </label>
           </div>
           <div className="form-control md:w-1/2 ml-4">
@@ -65,7 +65,7 @@ const AddItem = () => {
               <span className="label-text">Subcategory Name</span>
             </label>
             <label className="input-group">
-              <input type="text" name="name" placeholder="sub name" className="input input-bordered w-full" />
+              <input type="name" name="name" placeholder="sub name" className="input input-bordered w-full" />
             </label>
           </div>
         </div>
