@@ -9,14 +9,16 @@ const AddItem = () => {
     const form = event.target;
 
     const name = form.name.value;
-    const quantity = form.quantity.value;
-    const supplier = form.supplier.value;
-    const taste = form.taste.value;
-    const category = form.category.value;
-    const details = form.details.value;
+    const subName = form.name.value;
+    const description = form.description.value;
+    const price = form.price.value;
+    const rating = form.rating.value;
+    const processingTime = form.time.value;
+    const email = form.email.value;
+    const userName = form.name.value;
     const photo = form.photo.value;
 
-    const newCoffee = { name, quantity, supplier, taste, category, details, photo }
+    const newCoffee = { name, description, price, subName, processingTime, email, userName, rating, photo }
 
     console.log(newCoffee);
 
@@ -63,7 +65,7 @@ const AddItem = () => {
               <span className="label-text">Subcategory Name</span>
             </label>
             <label className="input-group">
-              <input type="text" name="quantity" placeholder="Available Quantity" className="input input-bordered w-full" />
+              <input type="text" name="name" placeholder="sub name" className="input input-bordered w-full" />
             </label>
           </div>
         </div>
@@ -106,47 +108,43 @@ const AddItem = () => {
           </div>
         </div>
         {/* form Photo url row */}
-        <div className="mb-8">
-          <div className="form-control w-full">
+        <div className="md:flex mb-8">
+          <div className="form-control md:w-1/2">
             <label className="label">
               <span className="label-text">Photo URL</span>
             </label>
             <label className="input-group">
-              <input type="text" name="photo" placeholder="Photo URL" className="input input-bordered w-full" />
+              <input type="url" name="photo" placeholder="photo url" className="input input-bordered w-full" />
             </label>
           </div>
-        </div>
-        <div className="mb-8">
-          <div className="form-control w-full">
+          <div className="form-control md:w-1/2 ml-4">
             <label className="label">
               <span className="label-text">Processing Time</span>
             </label>
             <label className="input-group">
-              <input type="text" name="processing" placeholder="processing" className="input input-bordered w-full" />
+              <input type="text" name="time" placeholder="processing time" className="input input-bordered w-full" />
             </label>
           </div>
         </div>
-        <div className="mb-8">
-          <div className="form-control w-full">
+        <div className="md:flex mb-8">
+          <div className="form-control md:w-1/2">
             <label className="label">
               <span className="label-text">User Email</span>
             </label>
             <label className="input-group">
-              <input type="email" name="email" placeholder="enter your email" className="input input-bordered w-full" />
+              <input type="email" name="email" placeholder="email" className="input input-bordered w-full" />
             </label>
           </div>
-        </div>
-        <div className="mb-8">
-          <div className="form-control w-full">
+          <div className="form-control md:w-1/2 ml-4">
             <label className="label">
               <span className="label-text">User Name</span>
             </label>
             <label className="input-group">
-              <input type="text" name="name" placeholder="name" className="input input-bordered w-full" />
+              <input type="name" name="name" placeholder="use name" className="input input-bordered w-full" />
             </label>
           </div>
         </div>
-        <input type="submit" value="Add Paper Craft" className=" bg-indigo-500 text-white md:w-96 text-xl" />
+        <input type="submit" value="Add Item Craft" className="btn btn-block relative py-3  overflow-hidden font-semibold rounded bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white text-xl" />
 
       </form>
     </div>
