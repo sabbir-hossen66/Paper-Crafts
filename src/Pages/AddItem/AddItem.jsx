@@ -57,7 +57,7 @@ const AddItem = () => {
               <span className="label-text">Item Name</span>
             </label>
             <label className="input-group">
-              <input type="name" name="name" placeholder="Coffee Name" className="input input-bordered w-full" />
+              <input type="text" name="name" placeholder="craft Name" className="input input-bordered w-full" />
             </label>
           </div>
           <div className="form-control md:w-1/2 ml-4">
@@ -65,7 +65,7 @@ const AddItem = () => {
               <span className="label-text">Subcategory Name</span>
             </label>
             <label className="input-group">
-              <input type="name" name="name" placeholder="sub name" className="input input-bordered w-full" />
+              <input type="text" name="subName" placeholder="sub name" className="input input-bordered w-full" />
             </label>
           </div>
         </div>
@@ -140,7 +140,7 @@ const AddItem = () => {
               <span className="label-text">User Name</span>
             </label>
             <label className="input-group">
-              <input type="name" name="name" placeholder="use name" className="input input-bordered w-full" />
+              <input type="text" name="userName" placeholder="use name" className="input input-bordered w-full" />
             </label>
           </div>
         </div>

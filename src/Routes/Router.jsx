@@ -10,6 +10,7 @@ import MyList from "../Pages/MyList/MyList";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
+import SingleCratDetails from "../Components/SingleCratDetails/SingleCratDetails";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -17,9 +18,14 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/home",
+        path: "/",
         element: <Home></Home>,
         loader: () => fetch('http://localhost:5000/papers')
+      },
+      {
+        path: "/craft-details/:id",
+        element: <SingleCratDetails></SingleCratDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/paper/${params.id}`)
       },
       {
         path: "/all-item",
