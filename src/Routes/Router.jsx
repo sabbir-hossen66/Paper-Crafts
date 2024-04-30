@@ -11,6 +11,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import SingleCratDetails from "../Components/SingleCratDetails/SingleCratDetails";
+import PrivetRoute from "./PrivetRoute";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -24,7 +25,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/craft-details/:id",
-        element: <SingleCratDetails></SingleCratDetails>,
+        element: <PrivetRoute><SingleCratDetails></SingleCratDetails></PrivetRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/paper/${params.id}`)
       },
       {

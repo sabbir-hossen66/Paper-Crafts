@@ -9,7 +9,7 @@ const Register = () => {
 
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
-
+  console.log(setSuccess);
   // use context
   const { createUser } = useContext(AuthContext)
   // location
@@ -38,16 +38,39 @@ const Register = () => {
     createUser(email, password)
       .then(result => {
         const response = result.user;
-        setSuccess(response)
+        // setSuccess(response)
+        console.log(response);
+        // user start
+        const createdAt = result.user?.metadata?.creationTime
+        const user = { email, createdAt: createdAt }
+        fetch(`http://localhost:5000/papers`, {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(user)
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.insertedId) {
+              Swal.fire({
+                title: 'Success!',
+                text: 'Thank you for sign Up',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+              })
+            }
+          })
+        // setSuccess(response)
 
         // navigate
         navigate(location?.state ? location.state : "/")
-        Swal.fire({
-          title: 'Success!',
-          text: 'Thank you for sign Up',
-          icon: 'success',
-          confirmButtonText: 'Cool'
-        })
+        // Swal.fire({
+        //   title: 'Success!',
+        //   text: 'Thank you for sign Up',
+        //   icon: 'success',
+        //   confirmButtonText: 'Cool'
+        // })
       })
       .catch(error => {
         const errorMessege = error.messege;
