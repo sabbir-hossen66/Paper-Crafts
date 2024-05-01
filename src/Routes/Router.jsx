@@ -39,6 +39,7 @@ export const router = createBrowserRouter([
       {
         path: "/my-list",
         element: <MyList></MyList>,
+
       },
       {
         path: "/register",
@@ -51,7 +52,7 @@ export const router = createBrowserRouter([
       {
         path: "/all-items",
         element: <AllItems></AllItems>,
-        loader: () => fetch('http://localhost:5000/user')
+        loader: () => fetch('http://localhost:5000/papers')
 
       },
     ],
