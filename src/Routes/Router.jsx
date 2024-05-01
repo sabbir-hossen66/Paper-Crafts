@@ -3,7 +3,6 @@ import {
   createBrowserRouter,
 } from "react-router-dom";
 import Root from "../Layout/Root/Root";
-import AllItem from "../Pages/AllItem/AllItem";
 import Home from "../Pages/Home/Home";
 import AddItem from "../Pages/AddItem/AddItem";
 import MyList from "../Pages/MyList/MyList";
@@ -12,6 +11,7 @@ import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import SingleCratDetails from "../Components/SingleCratDetails/SingleCratDetails";
 import PrivetRoute from "./PrivetRoute";
+import AllItems from "../Components/AllItems/AllItems";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -28,10 +28,10 @@ export const router = createBrowserRouter([
         element: <PrivetRoute><SingleCratDetails></SingleCratDetails></PrivetRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/paper/${params.id}`)
       },
-      {
-        path: "/all-item",
-        element: <AllItem></AllItem>,
-      },
+      // {
+      //   path: "/all-item",
+      //   element: <AllItem></AllItem>,
+      // },
       {
         path: "/add-item",
         element: <AddItem></AddItem>,
@@ -47,6 +47,12 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/all-items",
+        element: <AllItems></AllItems>,
+        loader: () => fetch('http://localhost:5000/user')
+
       },
     ],
   },

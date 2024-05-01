@@ -43,7 +43,7 @@ const Register = () => {
         // user start
         const createdAt = result.user?.metadata?.creationTime
         const user = { email, createdAt: createdAt }
-        fetch(`http://localhost:5000/papers`, {
+        fetch(`http://localhost:5000/user`, {
           method: 'POST',
           headers: {
             'content-type': 'application/json'
@@ -52,6 +52,7 @@ const Register = () => {
         })
           .then(res => res.json())
           .then(data => {
+            console.log(data);
             if (data.insertedId) {
               Swal.fire({
                 title: 'Success!',

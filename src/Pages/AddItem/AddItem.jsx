@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../Providers/AuthProviders";
 
 
 const AddItem = () => {
+  const { user } = useContext(AuthContext)
+  console.log(user);
 
   const handleAddCoffee = event => {
     event.preventDefault();
@@ -14,11 +18,11 @@ const AddItem = () => {
     const price = form.price.value;
     const rating = form.rating.value;
     const processingTime = form.time.value;
-    const email = form.email.value;
-    const userName = form.name.value;
+    const email = user.email;
+    const userName = user.displayName;
     const photo = form.photo.value;
 
-    const newCoffee = { name, description, price, subName, processingTime, email, userName, rating, photo }
+    const newCoffee = { name, description, price, subName, processingTime, rating, photo, email, userName }
 
     console.log(newCoffee);
 
@@ -126,7 +130,7 @@ const AddItem = () => {
             </label>
           </div>
         </div>
-        <div className="md:flex mb-8">
+        {/* <div className="md:flex mb-8">
           <div className="form-control md:w-1/2">
             <label className="label">
               <span className="label-text">User Email</span>
@@ -143,7 +147,7 @@ const AddItem = () => {
               <input type="text" name="userName" placeholder="use name" className="input input-bordered w-full" />
             </label>
           </div>
-        </div>
+        </div> */}
         <input type="submit" value="Add Item Craft" className="btn btn-block relative py-3  overflow-hidden font-semibold rounded bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white text-xl" />
 
       </form>

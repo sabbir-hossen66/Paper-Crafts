@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 const SingleCraftItem = ({ paper }) => {
   const { _id, name, description, price, subName, rating, photo, processingTime, email, userName, } = paper
-  console.log(name, description, price, subName, rating, photo);
   return (
     <div>
 
