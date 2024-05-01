@@ -8,7 +8,7 @@ const AllItem = ({ loadedItem }) => {
       <table className="table table-zebra">
         {/* head */}
         <thead>
-          <tr className="text-xl font-semibold items-center justify-center ">
+          <tr className="text-xl font-semibold text-center ">
             <th>Photo</th>
             <th>Name</th>
             <th>Email</th>
@@ -16,7 +16,7 @@ const AllItem = ({ loadedItem }) => {
             <th>View Details</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="text-center">
           {/* row 1 */}
           <tr>
             <th>

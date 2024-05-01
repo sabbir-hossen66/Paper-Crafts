@@ -38,7 +38,8 @@ export const router = createBrowserRouter([
       },
       {
         path: "/my-list",
-        element: <MyList></MyList>,
+        element: <PrivetRoute><MyList></MyList></PrivetRoute>,
+
 
       },
       {
