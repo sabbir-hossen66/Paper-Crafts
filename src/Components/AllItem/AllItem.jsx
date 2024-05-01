@@ -7,11 +7,12 @@ const AllItem = ({ loadedItem }) => {
       <table className="table table-zebra">
         {/* head */}
         <thead>
-          <tr className="text-xl font-semibold items-center justify-center">
+          <tr className="text-xl font-semibold items-center justify-center ">
             <th>Photo</th>
             <th>Name</th>
             <th>Email</th>
             <th>Processing Time</th>
+            <th>View Details</th>
           </tr>
         </thead>
         <tbody>
@@ -27,6 +28,7 @@ const AllItem = ({ loadedItem }) => {
             <td>{name}</td>
             <td>{email}</td>
             <td>{processingTime}</td>
+            <td><button className="relative px-8 py-2 ml-4 overflow-hidden font-semibold rounded bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white">View Details</button></td>
           </tr>
 
         </tbody>

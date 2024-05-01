@@ -106,12 +106,12 @@ const Header = () => {
               <div className="dropdown dropdown-hover">
                 <div tabIndex={0} role="button" className=" btn btn-ghost btn-circle avatar ">
                   <div className="w-10 rounded-full hover:relative">
-                    <img alt="Tailwind CSS Navbar component" src='' />
+                    <img alt="Tailwind CSS Navbar component" src={user.photoURL} />
                   </div>
                 </div>
-                <ul tabIndex={0} className="dropdown-content z-[1] mb-2 menu p-2 shadow bg-indigo-400 font-semibold rounded-box w-40 text-white">
+                <ul tabIndex={0} className="dropdown-content z-[1] mb-2 menu p-2 shadow bg-indigo-300 font-semibold rounded-box w-40 text-white">
                   <li>Name- {user.displayName}</li>
-                  <Link to={'/another-upProfile'}><li className="underline">See UpdatedProfile</li></Link>
+                  {/* <Link to={'/another-upProfile'}><li className="underline">See UpdatedProfile</li></Link> */}
                 </ul>
               </div>
 
