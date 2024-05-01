@@ -1,11 +1,15 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
+import { Link } from "react-router-dom";
 
 
 const MySingleList = ({ singleData }) => {
   const { user } = useContext(AuthContext)
 
-  const { name, photo, price, rating, subName, description } = singleData
+  const { _id, name, photo, price, rating, subName, description } = singleData;
+
+
+
   return (
     <div>
 
@@ -27,7 +31,9 @@ const MySingleList = ({ singleData }) => {
         </div>
         <div className="flex flex-wrap justify-between">
           <div className="space-x-2">
-            <button className="bg-indigo-500 text-white font-bold px-4 py-2 hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500  border border-indigo-700 rounded-md">Update</button>
+            <Link to={`/update/${_id}`}>
+              <button className="bg-indigo-500 text-white font-bold px-4 py-2 hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500  border border-indigo-700 rounded-md">Update</button>
+            </Link>
           </div>
           <div className="flex space-x-2 text-sm dark:text-gray-600">
             <button className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-700 font-bold">Delete</button>

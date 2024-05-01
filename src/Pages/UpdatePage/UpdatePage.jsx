@@ -1,61 +1,64 @@
 import { useContext } from "react";
-import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProviders";
+import { useLoaderData, useParams } from "react-router-dom";
 
 
-const AddItem = () => {
+const UpdatePage = () => {
+
   const { user } = useContext(AuthContext)
-  console.log(user);
 
-  const handleAddCoffee = event => {
-    event.preventDefault();
 
-    const form = event.target;
+  const { id } = useParams()
+  console.log(id);
+
+  const loadedPaper = useLoaderData()
+  console.log(loadedPaper);
+
+
+  if (!user) {
+    return 'loading'
+  }
+  const handleUpdate = (e) => {
+    e.preventDefault()
+    const form = e.target;
 
     const name = form.name.value;
     const subName = form.name.value;
     const description = form.description.value;
     const price = form.price.value;
-    const customization = form.customization.value
     const rating = form.rating.value;
     const processingTime = form.time.value;
     const email = user.email;
     const userName = user.displayName;
     const photo = form.photo.value;
 
-    const paperCraft = { name, description, price, subName, processingTime, rating, photo, email, userName, customization }
+    const paperCraft = { name, description, price, subName, processingTime, rating, photo, email, userName }
 
     console.log(paperCraft);
 
-    // send data to the server
-    fetch('http://localhost:5000/papers', {
-      method: 'POST',
+
+    fetch(`http://localhost:5000/update/${id}`, {
+      method: 'PUT',
       headers: {
-        'content-type': 'application/json'
+        'Content-Type': 'application/json',
+
       },
       body: JSON.stringify(paperCraft)
     })
       .then(res => res.json())
       .then(data => {
         console.log(data);
-        if (data.insertedId) {
-          Swal.fire({
-            title: 'Success!',
-            text: 'papers Added Successfully',
-            icon: 'success',
-            confirmButtonText: 'Cool'
-          })
-          event.target.reset()
+        if (data.modifiedCount > 0) {
+          alert('success')
         }
       })
+
   }
 
-
-
   return (
-    <div className="bg-[#F4F3F0] p-24">
-      <h2 className="text-3xl font-extrabold">Please Add Your Item</h2>
-      <form onSubmit={handleAddCoffee}>
+    <div>
+      <h2>Here is update</h2>
+      <form onSubmit={handleUpdate}>
         {/* form name and quantity row */}
         <div className="md:flex mb-8">
           <div className="form-control md:w-1/2">
@@ -63,7 +66,7 @@ const AddItem = () => {
               <span className="label-text">Item Name</span>
             </label>
             <label className="input-group">
-              <input type="text" name="name" placeholder="craft Name" className="input input-bordered w-full" />
+              <input type="text" name="name" defaultValue={loadedPaper.name} className="input input-bordered w-full" />
             </label>
           </div>
           <div className="form-control md:w-1/2 ml-4">
@@ -71,7 +74,7 @@ const AddItem = () => {
               <span className="label-text">Subcategory Name</span>
             </label>
             <label className="input-group">
-              <input type="text" name="subName" placeholder="sub name" className="input input-bordered w-full" />
+              <input type="text" name="subName" defaultValue={loadedPaper.subName} className="input input-bordered w-full" />
             </label>
           </div>
         </div>
@@ -82,7 +85,7 @@ const AddItem = () => {
               <span className="label-text">Short Description</span>
             </label>
             <label className="input-group">
-              <input type="text" name="description" placeholder="short description" className="input input-bordered w-full" />
+              <input type="text" name="description" defaultValue={loadedPaper.description} className="input input-bordered w-full" />
             </label>
           </div>
           <div className="form-control md:w-1/2 ml-4">
@@ -90,7 +93,7 @@ const AddItem = () => {
               <span className="label-text">Price</span>
             </label>
             <label className="input-group">
-              <input type="text" name="price" placeholder="price" className="input input-bordered w-full" />
+              <input type="text" name="price" defaultValue={loadedPaper.price} className="input input-bordered w-full" />
             </label>
           </div>
         </div>
@@ -101,7 +104,7 @@ const AddItem = () => {
               <span className="label-text">Rating</span>
             </label>
             <label className="input-group">
-              <input type="text" name="rating" placeholder="rating" className="input input-bordered w-full" />
+              <input type="text" name="rating" defaultValue={loadedPaper.rating} className="input input-bordered w-full" />
             </label>
           </div>
           <div className="form-control md:w-1/2 ml-4">
@@ -109,7 +112,7 @@ const AddItem = () => {
               <span className="label-text">Customization</span>
             </label>
             <label className="input-group">
-              <input type="text" name="customization" placeholder="customization" className="input input-bordered w-full" />
+              <input type="text" name="customization" defaultValue={loadedPaper.customization} className="input input-bordered w-full" />
             </label>
           </div>
         </div>
@@ -120,7 +123,7 @@ const AddItem = () => {
               <span className="label-text">Photo URL</span>
             </label>
             <label className="input-group">
-              <input type="url" name="photo" placeholder="photo url" className="input input-bordered w-full" />
+              <input type="url" name="photo" defaultValue={loadedPaper.photo} className="input input-bordered w-full" />
             </label>
           </div>
           <div className="form-control md:w-1/2 ml-4">
@@ -128,28 +131,11 @@ const AddItem = () => {
               <span className="label-text">Processing Time</span>
             </label>
             <label className="input-group">
-              <input type="text" name="time" placeholder="processing time" className="input input-bordered w-full" />
+              <input type="text" name="time" defaultValue={loadedPaper.processingTime} className="input input-bordered w-full" />
             </label>
           </div>
         </div>
-        {/* <div className="md:flex mb-8">
-          <div className="form-control md:w-1/2">
-            <label className="label">
-              <span className="label-text">User Email</span>
-            </label>
-            <label className="input-group">
-              <input type="email" name="email" placeholder="email" className="input input-bordered w-full" />
-            </label>
-          </div>
-          <div className="form-control md:w-1/2 ml-4">
-            <label className="label">
-              <span className="label-text">User Name</span>
-            </label>
-            <label className="input-group">
-              <input type="text" name="userName" placeholder="use name" className="input input-bordered w-full" />
-            </label>
-          </div>
-        </div> */}
+
         <input type="submit" value="Add Item Craft" className="btn btn-block relative py-3  overflow-hidden font-semibold rounded bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white text-xl" />
 
       </form>
@@ -157,4 +143,4 @@ const AddItem = () => {
   );
 };
 
-export default AddItem;
+export default UpdatePage;
