@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 
 
 const AllItem = ({ loadedItem }) => {
-  const { name, photo, processingTime, email } = loadedItem;
+  const { _id, name, photo, processingTime, email } = loadedItem;
   return (
     <div className="max-w-screen-2xl mx-auto overflow-x-auto">
       <table className="table table-zebra">
@@ -28,7 +29,11 @@ const AllItem = ({ loadedItem }) => {
             <td>{name}</td>
             <td>{email}</td>
             <td>{processingTime}</td>
-            <td><button className="relative px-8 py-2 ml-4 overflow-hidden font-semibold rounded bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white">View Details</button></td>
+            <td>
+              <Link to={`/craft-details/${_id}`}>
+                <button className="relative px-8 py-2 ml-4 overflow-hidden font-semibold rounded bg-indigo-500 hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white">View Details</button>
+              </Link>
+            </td>
           </tr>
 
         </tbody>
