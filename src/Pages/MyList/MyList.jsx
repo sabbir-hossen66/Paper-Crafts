@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
+import MySingleList from "../MySingleList/MySingleList";
 
 
 
@@ -21,12 +22,14 @@ const MyList = () => {
 
   return (
     <div>
-      {/* <h2>This is my list</h2> */}
-      {
-        seeEmail.map(singleData => (<div key={singleData._id}>
-          <h2>this is:{singleData.name}</h2>
-        </div>))
-      }
+      <h2 className="text-3xl text-center py-8">My Added Card</h2>
+      <div className="grid lg:grid-cols-3 gap-4 max-w-screen-2xl mx-auto pb-8">
+        {
+          seeEmail.map(singleData => <MySingleList key={singleData._id}
+            singleData={singleData}
+          ></MySingleList>)
+        }
+      </div>
     </div>
   );
 };

@@ -22,9 +22,9 @@ const AddItem = () => {
     const userName = user.displayName;
     const photo = form.photo.value;
 
-    const newCoffee = { name, description, price, subName, processingTime, rating, photo, email, userName }
+    const paperCraft = { name, description, price, subName, processingTime, rating, photo, email, userName }
 
-    console.log(newCoffee);
+    console.log(paperCraft);
 
     // send data to the server
     fetch('http://localhost:5000/papers', {
@@ -32,7 +32,7 @@ const AddItem = () => {
       headers: {
         'content-type': 'application/json'
       },
-      body: JSON.stringify(newCoffee)
+      body: JSON.stringify(paperCraft)
     })
       .then(res => res.json())
       .then(data => {
@@ -99,7 +99,7 @@ const AddItem = () => {
               <span className="label-text">Rating</span>
             </label>
             <label className="input-group">
-              <input type="text" name="rating" placeholder="Category" className="input input-bordered w-full" />
+              <input type="text" name="rating" placeholder="rating" className="input input-bordered w-full" />
             </label>
           </div>
           <div className="form-control md:w-1/2 ml-4">
