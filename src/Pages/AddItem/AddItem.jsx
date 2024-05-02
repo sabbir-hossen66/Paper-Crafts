@@ -29,7 +29,7 @@ const AddItem = () => {
     console.log(paperCraft);
 
     // send data to the server
-    fetch('http://localhost:5000/papers', {
+    fetch('https://b9a10-server-side-sabbir-hossen66.vercel.app/papers', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

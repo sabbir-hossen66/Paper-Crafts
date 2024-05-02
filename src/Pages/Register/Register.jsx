@@ -44,7 +44,7 @@ const Register = () => {
         // user start
         const createdAt = result.user?.metadata?.creationTime
         const user = { email, createdAt: createdAt }
-        fetch(`http://localhost:5000/user`, {
+        fetch(`https://b9a10-server-side-sabbir-hossen66.vercel.app/user`, {
           method: 'POST',
           headers: {
             'content-type': 'application/json'

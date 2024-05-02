@@ -23,7 +23,7 @@ const MySingleList = ({ singleData }) => {
     }).then((result) => {
       if (result.isConfirmed) {
 
-        fetch(`http://localhost:5000/paper/${_id}`, {
+        fetch(`https://b9a10-server-side-sabbir-hossen66.vercel.app/paper/${_id}`, {
           method: 'DELETE'
         })
           .then(res => res.json())

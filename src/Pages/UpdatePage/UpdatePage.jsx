@@ -38,7 +38,7 @@ const UpdatePage = () => {
     console.log(paperCraft);
 
 
-    fetch(`http://localhost:5000/update/${id}`, {
+    fetch(`https://b9a10-server-side-sabbir-hossen66.vercel.app/update/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

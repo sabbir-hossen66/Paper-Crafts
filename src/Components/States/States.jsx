@@ -64,7 +64,7 @@ const States = () => {
       </section>
 
       {/* media */}
-      <h2 className="text-4xl text-center font-semibold pb-6">Our Media Stat</h2>
+      <h2 className="text-4xl text-center font-semibold pb-6y">Our Media Stat</h2>
       <section className="p-6 text-gray-800">
         <div className="container mx-auto grid justify-center grid-cols-2 text-center lg:grid-cols-3">
           <div className="flex flex-col justify-start m-2 lg:m-6">

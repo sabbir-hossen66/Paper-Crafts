@@ -22,12 +22,12 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/papers')
+        loader: () => fetch('https://b9a10-server-side-sabbir-hossen66.vercel.app/papers')
       },
       {
         path: "/craft-details/:id",
         element: <PrivetRoute><SingleCratDetails></SingleCratDetails></PrivetRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/paper/${params.id}`)
+        loader: ({ params }) => fetch(`https://b9a10-server-side-sabbir-hossen66.vercel.app/paper/${params.id}`)
       },
       // {
       //   path: "/all-item",
@@ -46,7 +46,7 @@ export const router = createBrowserRouter([
       {
         path: "/update/:id",
         element: <PrivetRoute><UpdatePage></UpdatePage></PrivetRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/paper/${params.id}`)
+        loader: ({ params }) => fetch(`https://b9a10-server-side-sabbir-hossen66.vercel.app/paper/${params.id}`)
 
 
       },
@@ -61,7 +61,7 @@ export const router = createBrowserRouter([
       {
         path: "/all-items",
         element: <AllItems></AllItems>,
-        loader: () => fetch('http://localhost:5000/papers')
+        loader: () => fetch('https://b9a10-server-side-sabbir-hossen66.vercel.app/papers')
 
       },
     ],
