@@ -32,6 +32,8 @@ const MyList = () => {
           {
             seeEmail.map(singleData => <MySingleList key={singleData._id}
               singleData={singleData}
+              setSeeData={setSeeData}
+              seeEmail={seeEmail}
             ></MySingleList>)
           }
         </div>

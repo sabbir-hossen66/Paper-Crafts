@@ -1,13 +1,11 @@
-import { useContext, useState, } from "react";
+import { useContext, } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
-const MySingleList = ({ singleData }) => {
+const MySingleList = ({ singleData, setSeeData, seeEmail }) => {
   const { user } = useContext(AuthContext)
-
-  const [deleteUser, setDeleteUser] = useState()
 
   const { _id, name, photo, price, rating, subName, description } = singleData;
 
@@ -32,8 +30,8 @@ const MySingleList = ({ singleData }) => {
             console.log(data);
             if (data.deletedCount > 0) {
               // remove the papers from the ui
-              const remainingDeleteUser = deleteUser.filter(singleDeleteUser => singleDeleteUser._id !== _id)
-              setDeleteUser(remainingDeleteUser)
+              const remainingDeleteUser = seeEmail.filter(singleDeleteUser => singleDeleteUser._id !== _id)
+              setSeeData(remainingDeleteUser)
               Swal.fire({
                 title: "Deleted!",
                 text: "Your paper has been deleted.",
