@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 
 const MySingleList = ({ singleData }) => {
   const { user } = useContext(AuthContext)
+
   const [deleteUser, setDeleteUser] = useState()
 
   const { _id, name, photo, price, rating, subName, description } = singleData;

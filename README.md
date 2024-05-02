@@ -6,3 +6,5 @@
 - In this project i created some features and also have some protected routes
 - In this project i implement express js for server side
 - any person can added items and also updated items. 
+-use  lottie reat
+-use react awesome reveal
