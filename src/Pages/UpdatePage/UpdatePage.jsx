@@ -63,7 +63,7 @@ const UpdatePage = () => {
 
   return (
     <div>
-      <h2 className="text-center text-3xl font-bold py-8">Here is update</h2>
+      <h2 className="text-center text-3xl font-bold py-8">You can update Paper</h2>
       <form onSubmit={handleUpdate} className="max-w-screen-2xl mx-auto">
         {/* form name and quantity row */}
         <div className=" md:flex mb-8">
