@@ -35,7 +35,7 @@ export const router = createBrowserRouter([
       // },
       {
         path: "/add-item",
-        element: <AddItem></AddItem>,
+        element: <PrivetRoute><AddItem></AddItem></PrivetRoute>,
       },
       {
         path: "/my-list",

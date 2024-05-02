@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { useLoaderData, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const UpdatePage = () => {
@@ -49,7 +50,12 @@ const UpdatePage = () => {
       .then(data => {
         console.log(data);
         if (data.modifiedCount > 0) {
-          alert('success')
+          Swal.fire({
+            title: 'success!',
+            text: 'Updated',
+            icon: 'success',
+            confirmButtonText: 'Cool'
+          })
         }
       })
 
@@ -57,10 +63,10 @@ const UpdatePage = () => {
 
   return (
     <div>
-      <h2>Here is update</h2>
-      <form onSubmit={handleUpdate}>
+      <h2 className="text-center text-3xl font-bold py-8">Here is update</h2>
+      <form onSubmit={handleUpdate} className="max-w-screen-2xl mx-auto">
         {/* form name and quantity row */}
-        <div className="md:flex mb-8">
+        <div className=" md:flex mb-8">
           <div className="form-control md:w-1/2">
             <label className="label">
               <span className="label-text">Item Name</span>
@@ -136,7 +142,7 @@ const UpdatePage = () => {
           </div>
         </div>
 
-        <input type="submit" value="Add Item Craft" className="btn btn-block relative py-3  overflow-hidden font-semibold rounded bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white text-xl" />
+        <input type="submit" value="Updated" className="btn btn-block relative py-3 mb-8  overflow-hidden font-semibold rounded bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white text-xl" />
 
       </form>
     </div>

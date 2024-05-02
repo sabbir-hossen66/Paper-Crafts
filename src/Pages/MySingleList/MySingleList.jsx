@@ -1,13 +1,48 @@
-import { useContext } from "react";
+import { useContext, useState, } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const MySingleList = ({ singleData }) => {
   const { user } = useContext(AuthContext)
+  const [deleteUser, setDeleteUser] = useState()
 
   const { _id, name, photo, price, rating, subName, description } = singleData;
 
+  const handleDelete = _id => {
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        fetch(`http://localhost:5000/paper/${_id}`, {
+          method: 'DELETE'
+        })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              // remove the papers from the ui
+              const remainingDeleteUser = deleteUser.filter(singleDeleteUser => singleDeleteUser._id !== _id)
+              setDeleteUser(remainingDeleteUser)
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your paper has been deleted.",
+                icon: "success"
+              });
+            }
+          })
+      }
+    });
+  }
 
 
   return (
@@ -36,7 +71,7 @@ const MySingleList = ({ singleData }) => {
             </Link>
           </div>
           <div className="flex space-x-2 text-sm dark:text-gray-600">
-            <button className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-700 font-bold">Delete</button>
+            <button onClick={() => handleDelete(_id)} className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-700 font-bold">Delete</button>
           </div>
         </div>
       </div>
