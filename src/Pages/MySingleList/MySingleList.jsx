@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 const MySingleList = ({ singleData, setSeeData, seeEmail }) => {
   const { user } = useContext(AuthContext)
 
-  const { _id, name, photo, price, rating, subName, description } = singleData;
+  const { _id, name, photo, price, rating, subName, description, processingTime } = singleData;
 
   const handleDelete = _id => {
 
@@ -61,6 +61,7 @@ const MySingleList = ({ singleData, setSeeData, seeEmail }) => {
           <p className="text-sm "><span className="font-semibold">sub_name: </span>{subName}</p>
           <p className="text-sm "><span className="font-semibold">price: </span>{price}</p>
           <p className="text-sm "><span className="font-semibold">rating: </span>{rating}</p>
+          <p className="text-sm "><span className="font-semibold">time: </span>{processingTime}</p>
           <p className="text-sm "><span className="font-semibold">description: </span>{description}</p>
         </div>
         <div className="flex flex-wrap justify-between">
