@@ -1,17 +1,17 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+
+console.log('firebase inside', import.meta.env.VITE_PASS);
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDAgvCz0EHRSro0v4JUo2N1q9lBQBJDE94",
-  authDomain: "paper-crafts-f56f2.firebaseapp.com",
-  projectId: "paper-crafts-f56f2",
-  storageBucket: "paper-crafts-f56f2.appspot.com",
-  messagingSenderId: "104280775920",
-  appId: "1:104280775920:web:3a7412723e224796b7b635"
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID
 };
 
 // Initialize Firebase
